@@ -1,4 +1,5 @@
---- Slides for "Pairwise and Property Based Testing"
+Slides for "Pairwise and Property Based Testing"
+================================================
 
 To view the slides you need a local HTTP server. You can use for example python's http server module:
 
