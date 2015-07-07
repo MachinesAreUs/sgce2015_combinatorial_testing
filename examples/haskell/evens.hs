@@ -5,8 +5,8 @@ import Data.Functor
 
 newtype Word = Word Char deriving (Show, Eq)
 
---instance Arbitrary Word where
---  arbitrary = Word <$> choose ('0','1')
+instance Arbitrary Word where
+  arbitrary = Word <$> choose ('0','1')
 
 data State = S1 | S2
 
