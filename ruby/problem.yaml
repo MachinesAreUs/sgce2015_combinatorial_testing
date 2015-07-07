@@ -1,0 +1,3 @@
+OS: [Windows, Linux]
+CPU: [Intel, AMD]
+Protocol: [IPV4, IPV6]
