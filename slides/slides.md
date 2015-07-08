@@ -366,7 +366,7 @@ ghci> quickCheck (\s -> length(reverse s) == length s)
 
 --
 ```Haskell
-ghci> quickCheck (\s -> if isPalindrome(s) then (reverse s == s) else True)
+ghci> quickCheck (\s -> isPalindrome s ==> reverse s == s)
 +++ OK, passed 100 tests.
 ```
 
