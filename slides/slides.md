@@ -327,13 +327,13 @@ class: center, middle
 ---
 # Property Based Testing
 
-+ Es una técnica complementaria a unit testing.
++ Es una técnica **complementaria** a unit testing.
 
 --
-+ La idea es especificar un conjunto de propiedades que siempre se deben cumplir (invariantes).
++ La idea es **especificar** un conjunto de **propiedades** que siempre se deben cumplir (invariantes).
 
 --
-+ El framework genera un conjunto de ejemplos 'aleatorios' contra los cuales probar si la propiedad se cumple o no.
++ El framework (QuickCheck) genera un conjunto de ejemplos 'aleatorios' contra los cuales probar si la propiedad se cumple o no.
 
 --
 + Si encuentra un ejemplo que invalida la propiedad, trata de reducirlo a su mínima expresión. 
@@ -365,7 +365,7 @@ ghci> quickCheck (\s -> length(reverse s) == length s)
 **Propiedad 3**: El reverso de una cadena palíndroma, es la misma cadena.
 
 --
-```Haskell
+```haskell
 ghci> quickCheck (\s -> isPalindrome s ==> reverse s == s)
 +++ OK, passed 100 tests.
 ```
@@ -389,7 +389,7 @@ La función 'decide' decide si el autómata acepta la cadena o no. Ejemplos:
 **Propiedad 1**: `decide` debe regresar solo `True` o `False`.
 
 --
-```Haskell
+```haskell
 ghci> quickCheck (\s -> decide s `elem` [True, False])
 +++ OK, passed 100 tests.
 ```
@@ -397,11 +397,22 @@ ghci> quickCheck (\s -> decide s `elem` [True, False])
 **Propiedad 2**: `decide` sólo acepta cadenas con un númpero par de 0's.
 
 --
-```Haskell
+```haskell
 ghci> quickCheck (\s -> isEvenZeros s == decide s)
 +++ OK, passed 100 tests.
 ```
+--
+.center[Y... ¿si quiero probar 10,000 casos?]
 
+--
+```haskell
+ghci> let deepCheck p = quickCheckWith (stdArgs {maxSuccess = 10000}) p
+```
+--
+```haskell
+ghci> deepCheck (\s -> isEvenZeroes s == decide s) 
++++ OK, passed 10000 tests.
+```
 ---
 # .center[¿Y Java apá ?]
 
